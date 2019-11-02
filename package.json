@@ -2,18 +2,54 @@
   "name": "vue-svg-map",
   "version": "0.0.1",
   "description": "A set of Vue.js components to display an interactive SVG map",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.min.js",
+  "browser": {
+    "./sfc/svg-map": "src/components/svg-map.vue",
+    "./sfc/checkbox-svg-map": "src/components/checkbox-svg-map.vue",
+    "./sfc/radio-svg-map": "src/components/radio-svg-map.vue"
   },
+  "scripts": {
+    "build:umd": "rollup --config rollup.config.js --format umd --file dist/index.umd.js",
+    "build:es": "rollup --config rollup.config.js --format es --file dist/index.esm.js",
+    "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/index.min.js",
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "lint": "eslint src/* examples/src/**/*"
+  },
+  "author": "Victor Cazanave <victor.cazanave@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "component",
+    "svg",
+    "interactive",
+    "map"
+  ],
+  "homepage": "https://github.com/VictorCazanave/vue-svg-map#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VictorCazanave/vue-svg-map.git"
   },
-  "author": "Victor Cazanave <victor.cazanave@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/VictorCazanave/vue-svg-map/issues"
   },
-  "homepage": "https://github.com/VictorCazanave/vue-svg-map#readme"
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "rollup": "^1.16.2",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-scss": "^1.0.2",
+    "rollup-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "peerDependencies": {
+    "vue": "^2.0.0"
+  }
 }
