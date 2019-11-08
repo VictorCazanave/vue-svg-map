@@ -15,6 +15,10 @@ export function install(Vue) {
 	Vue.component('RadioSvgMap', RadioSvgMap)
 }
 
+// To allow use as module (npm/webpack/etc.) export components
+// Based on: https://github.com/Akryum/v-tooltip/blob/master/src/index.js
+export { SvgMap, CheckboxSvgMap, RadioSvgMap }
+
 // Create module definition for Vue.use()
 const plugin = {
 	install,
@@ -31,9 +35,4 @@ if (GlobalVue) {
 	GlobalVue.use(plugin)
 }
 
-// To allow use as module (npm/webpack/etc.) export components
-export default {
-	SvgMap,
-	CheckboxSvgMap,
-	RadioSvgMap,
-}
+export default plugin
