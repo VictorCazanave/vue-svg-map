@@ -235,7 +235,6 @@ MIT
 ## TODO
 
 - Test package
-- Fix Demo
 - Fix lint script
 - Add unit tests
 - Configure CI
