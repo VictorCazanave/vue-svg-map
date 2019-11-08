@@ -235,7 +235,6 @@ MIT
 ## TODO
 
 - Test package
-- Fix lint script
 - Add unit tests
 - Configure CI
 - Configure npmignore
