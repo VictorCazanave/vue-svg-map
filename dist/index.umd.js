@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = global || self, factory(global.VueSvgMap = {}));
-}(this, function (exports) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue-runtime-helpers')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'vue-runtime-helpers'], factory) :
+	(global = global || self, factory(global.VueSvgMap = {}, global.vueRuntimeHelpers));
+}(this, (function (exports, vueRuntimeHelpers) { 'use strict';
 
 	//
 	//
@@ -68,91 +68,6 @@
 		},
 	};
 
-	function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
-	/* server only */
-	, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-	  if (typeof shadowMode !== 'boolean') {
-	    createInjectorSSR = createInjector;
-	    createInjector = shadowMode;
-	    shadowMode = false;
-	  } // Vue.extend constructor export interop.
-
-
-	  var options = typeof script === 'function' ? script.options : script; // render functions
-
-	  if (template && template.render) {
-	    options.render = template.render;
-	    options.staticRenderFns = template.staticRenderFns;
-	    options._compiled = true; // functional template
-
-	    if (isFunctionalTemplate) {
-	      options.functional = true;
-	    }
-	  } // scopedId
-
-
-	  if (scopeId) {
-	    options._scopeId = scopeId;
-	  }
-
-	  var hook;
-
-	  if (moduleIdentifier) {
-	    // server build
-	    hook = function hook(context) {
-	      // 2.3 injection
-	      context = context || // cached call
-	      this.$vnode && this.$vnode.ssrContext || // stateful
-	      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
-	      // 2.2 with runInNewContext: true
-
-	      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-	        context = __VUE_SSR_CONTEXT__;
-	      } // inject component styles
-
-
-	      if (style) {
-	        style.call(this, createInjectorSSR(context));
-	      } // register component module identifier for async chunk inference
-
-
-	      if (context && context._registeredComponents) {
-	        context._registeredComponents.add(moduleIdentifier);
-	      }
-	    }; // used by ssr in case component is cached and beforeCreate
-	    // never gets called
-
-
-	    options._ssrRegister = hook;
-	  } else if (style) {
-	    hook = shadowMode ? function () {
-	      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
-	    } : function (context) {
-	      style.call(this, createInjector(context));
-	    };
-	  }
-
-	  if (hook) {
-	    if (options.functional) {
-	      // register for functional component in vue file
-	      var originalRender = options.render;
-
-	      options.render = function renderWithStyleInjection(h, context) {
-	        hook.call(context);
-	        return originalRender(h, context);
-	      };
-	    } else {
-	      // inject component registration as beforeCreate hook
-	      var existing = options.beforeCreate;
-	      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-	    }
-	  }
-
-	  return script;
-	}
-
-	var normalizeComponent_1 = normalizeComponent;
-
 	/* script */
 	var __vue_script__ = script;
 
@@ -217,15 +132,19 @@
 	  
 	  /* style inject SSR */
 	  
+	  /* style inject shadow dom */
+	  
 
 	  
-	  var SvgMap = normalizeComponent_1(
+	  var SvgMap = vueRuntimeHelpers.normalizeComponent(
 	    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
 	    __vue_inject_styles__,
 	    __vue_script__,
 	    __vue_scope_id__,
 	    __vue_is_functional_template__,
 	    __vue_module_identifier__,
+	    false,
+	    undefined,
 	    undefined,
 	    undefined
 	  );
@@ -349,15 +268,19 @@
 	  
 	  /* style inject SSR */
 	  
+	  /* style inject shadow dom */
+	  
 
 	  
-	  var CheckboxSvgMap = normalizeComponent_1(
+	  var CheckboxSvgMap = vueRuntimeHelpers.normalizeComponent(
 	    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
 	    __vue_inject_styles__$1,
 	    __vue_script__$1,
 	    __vue_scope_id__$1,
 	    __vue_is_functional_template__$1,
 	    __vue_module_identifier__$1,
+	    false,
+	    undefined,
 	    undefined,
 	    undefined
 	  );
@@ -598,15 +521,19 @@
 	  
 	  /* style inject SSR */
 	  
+	  /* style inject shadow dom */
+	  
 
 	  
-	  var RadioSvgMap = normalizeComponent_1(
+	  var RadioSvgMap = vueRuntimeHelpers.normalizeComponent(
 	    { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
 	    __vue_inject_styles__$2,
 	    __vue_script__$2,
 	    __vue_scope_id__$2,
 	    __vue_is_functional_template__$2,
 	    __vue_module_identifier__$2,
+	    false,
+	    undefined,
 	    undefined,
 	    undefined
 	  );
@@ -638,16 +565,12 @@
 		GlobalVue.use(plugin);
 	}
 
-	// To allow use as module (npm/webpack/etc.) export components
-	var wrapper = {
-		SvgMap: SvgMap,
-		CheckboxSvgMap: CheckboxSvgMap,
-		RadioSvgMap: RadioSvgMap,
-	};
-
-	exports.default = wrapper;
+	exports.CheckboxSvgMap = CheckboxSvgMap;
+	exports.RadioSvgMap = RadioSvgMap;
+	exports.SvgMap = SvgMap;
+	exports.default = plugin;
 	exports.install = install;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
