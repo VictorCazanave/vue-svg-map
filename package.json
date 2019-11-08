@@ -24,7 +24,8 @@
 		"build:es": "rollup --config rollup.config.js --format es --file dist/index.esm.js",
 		"build:unpkg": "rollup --config rollup.config.js --format iife --file dist/index.min.js",
 		"build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-		"lint": "eslint src/* examples/src/**/*"
+		"lint": "eslint src/* examples/src/**/*",
+		"prepublish": "npm run lint && npm run build"
 	},
 	"homepage": "https://github.com/VictorCazanave/vue-svg-map#readme",
 	"repository": {
