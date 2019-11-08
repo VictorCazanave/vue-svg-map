@@ -1,26 +1,26 @@
 {
-  "name": "vue-svg-map-demo",
-  "version": "1.0.0",
-  "description": "A set of examples using vue-svg-map components",
-  "author": "Victor Cazanave <victor.cazanave@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
-  },
-  "dependencies": {
-    "@svg-maps/australia": "^1.1.0",
-    "@svg-maps/france.regions": "^1.1.0",
-    "@svg-maps/taiwan.main": "^1.0.0",
-    "@svg-maps/usa": "^1.1.0",
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.0",
-    "@vue/cli-service": "^3.12.0",
-    "sass": "^1.19.0",
-    "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
-  }
+	"name": "vue-svg-map-demo",
+	"version": "1.0.0",
+	"description": "A set of examples using vue-svg-map components",
+	"author": "Victor Cazanave <victor.cazanave@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build"
+	},
+	"dependencies": {
+		"@svg-maps/australia": "^1.1.0",
+		"@svg-maps/france.regions": "^1.1.0",
+		"@svg-maps/taiwan.main": "^1.0.0",
+		"@svg-maps/usa": "^1.1.0",
+		"core-js": "^2.6.5",
+		"vue": "^2.6.10"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "^3.12.0",
+		"@vue/cli-service": "^3.12.0",
+		"sass": "^1.19.0",
+		"sass-loader": "^8.0.0",
+		"vue-template-compiler": "^2.6.10"
+	}
 }
