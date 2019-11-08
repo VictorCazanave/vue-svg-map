@@ -235,6 +235,7 @@ MIT
 ## TODO
 
 - Test package
+- Fix Demo
 - Add unit tests
 - Configure CI
 - Configure npmignore
