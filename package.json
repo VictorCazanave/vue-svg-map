@@ -25,7 +25,8 @@
 		"build:unpkg": "rollup --config rollup.config.js --format iife --file dist/index.min.js",
 		"build": "npm run build:umd & npm run build:es & npm run build:unpkg",
 		"lint": "eslint src/ demo/src/ --ext .js,.vue",
-		"prepublish": "npm run lint && npm run build"
+		"test": "jest",
+		"prepublish": "npm run lint && npm run test && npm run build"
 	},
 	"homepage": "https://github.com/VictorCazanave/vue-svg-map#readme",
 	"repository": {
@@ -36,19 +37,28 @@
 		"url": "https://github.com/VictorCazanave/vue-svg-map/issues"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.7.7",
+		"@babel/plugin-transform-modules-commonjs": "^7.7.5",
+		"@vue/test-utils": "^1.0.0-beta.30",
+		"babel-core": "^7.0.0-bridge.0",
+		"babel-jest": "^24.9.0",
 		"eslint": "^5.16.0",
 		"eslint-config-standard": "^12.0.0",
 		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-jest": "^23.1.1",
 		"eslint-plugin-node": "^9.2.0",
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-standard": "^4.0.1",
 		"eslint-plugin-vue": "^5.2.3",
+		"jest": "^24.9.0",
 		"rollup": "^1.26.3",
 		"rollup-plugin-buble": "^0.19.8",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-scss": "^1.0.2",
 		"rollup-plugin-vue": "5.1.1",
-		"vue-template-compiler": "^2.6.10"
+		"vue": "^2.6.11",
+		"vue-jest": "^3.0.5",
+		"vue-template-compiler": "^2.6.11"
 	},
 	"peerDependencies": {
 		"vue": "^2.0.0"
