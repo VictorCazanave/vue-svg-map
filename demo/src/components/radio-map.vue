@@ -11,7 +11,7 @@
         Focused location: {{ focusedLocation }}
       </div>
       <div class="examples__block__info__item">
-        Selected location: {{ getLocationName(selectedLocation) }}
+        Selected location: {{ getSelectedLocationName(Australia, selectedLocation) }}
       </div>
     </div>
     <div class="examples__block__map examples__block__map--australia">
@@ -29,7 +29,7 @@
 
 <script>
 import Australia from '@svg-maps/australia'
-import { getLocationName } from '../utilities'
+import { getLocationName, getSelectedLocationName } from '../utilities'
 import RadioSvgMap from '../../../src/components/radio-svg-map'
 
 export default {
@@ -58,7 +58,7 @@ export default {
 		blurLocation(event) {
 			this.focusedLocation = null
 		},
-		getLocationName,
+		getSelectedLocationName,
 	},
 }
 </script>

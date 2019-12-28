@@ -23,20 +23,10 @@ export default {
 		event: 'change',
 	},
 	props: {
-		// Used for v-model
+		// Ids of selected locations (used for v-model)
 		value: {
 			type: Array,
 			default: () => [],
-		},
-	},
-	data() {
-		return {
-			selectedLocations: this.value,
-		}
-	},
-	watch: {
-		value() {
-			this.selectedLocations = this.value
 		},
 	},
 	methods: {
@@ -47,7 +37,7 @@ export default {
 	 	 * @returns {boolean} True if the location is selected
 		 */
 		isLocationSelected(location) {
-			return this.selectedLocations.findIndex(selectedLocation => selectedLocation.id === location.id) > -1
+			return this.value.some(selectedLocation => selectedLocation === location.id)
 		},
 
 		/**
@@ -56,18 +46,18 @@ export default {
 	 	 * @param {Event} event - Triggered event
 	 	 */
 		toggleLocation(event) {
-			const location = event.target
+			const locationElt = event.target
+			let selectedLocations
 
-			if (location.attributes['aria-checked'] && location.attributes['aria-checked'].value === 'true') {
+			if (locationElt.attributes['aria-checked'] && locationElt.attributes['aria-checked'].value === 'true') {
 				// Delete location
-				this.selectedLocations.splice(this.selectedLocations.indexOf(location), 1)
+				selectedLocations = this.value.filter(location => location !== locationElt.id)
 			} else {
 				// Add location
-				// FIXME: Push only value/label/id?
-				this.selectedLocations.push(location)
+				selectedLocations = [...this.value, locationElt.id]
 			}
 
-			this.$emit('change', this.selectedLocations)
+			this.$emit('change', selectedLocations)
 		},
 	},
 }

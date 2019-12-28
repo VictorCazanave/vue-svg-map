@@ -28,19 +28,10 @@ export default {
 		event: 'change',
 	},
 	props: {
+		// Id of selected location (used for v-model)
 		value: {
-			type: Object,
+			type: String,
 			default: null,
-		},
-	},
-	data() {
-		return {
-			selectedLocation: this.value,
-		}
-	},
-	watch: {
-		value() {
-			this.selectedLocation = this.value
 		},
 	},
 	mounted() {
@@ -57,7 +48,7 @@ export default {
 		getLocationTabindex(location, index) {
 			let tabindex = null
 
-			if (this.selectedLocation) {
+			if (this.value) {
 				// Only selected location is focusable
 				tabindex = this.isLocationSelected(location) ? '0' : '-1'
 			} else {
@@ -75,23 +66,23 @@ export default {
 	 	 * @returns {boolean} True if the location is selected
 	 	 */
 		isLocationSelected(location) {
-			return this.selectedLocation && this.selectedLocation.id === location.id
+			return this.value === location.id
 		},
 
 		/**
 	 	 * Select a location
 	 	 *
-	 	 * @param {Node} location - Location DOM node
+	 	 * @param {Node} location - DOM node of location to select
 	 	 */
 		selectLocation(location) {
-			// Focus new selected location
-			location.focus()
+			// Select only if new location
+			if (location.id !== this.value) {
+				// Focus new selected location
+				location.focus()
 
-			// Change selected location
-			this.selectedLocation = location
-
-			// Emit selected location
-			this.$emit('change', this.selectedLocation)
+				// Emit id of selected location
+				this.$emit('change', location.id)
+			}
 		},
 
 		/**
@@ -102,7 +93,7 @@ export default {
 		toggleLocation(event) {
 			const focusedLocation = event.target
 
-			if (this.selectedLocation !== focusedLocation) {
+			if (this.value !== focusedLocation.id) {
 				this.selectLocation(focusedLocation)
 			}
 		},
