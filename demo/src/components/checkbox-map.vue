@@ -15,9 +15,9 @@
         <ul>
           <li
             v-for="location in selectedLocations"
-            :key="location.id"
+            :key="location"
           >
-            {{ getLocationName(location) }}
+            {{ getSelectedLocationName(Taiwan, location) }}
           </li>
         </ul>
       </div>
@@ -37,7 +37,7 @@
 
 <script>
 import Taiwan from '@svg-maps/taiwan.main'
-import { getLocationName } from '../utilities'
+import { getLocationName, getSelectedLocationName } from '../utilities'
 import CheckboxSvgMap from '../../../src/components/checkbox-svg-map'
 
 export default {
@@ -66,7 +66,7 @@ export default {
 		blurLocation(event) {
 			this.focusedLocation = null
 		},
-		getLocationName,
+		getSelectedLocationName,
 	},
 }
 </script>
