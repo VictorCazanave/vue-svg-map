@@ -235,20 +235,10 @@
 			event: 'change',
 		},
 		props: {
-			// Used for v-model
+			// Ids of selected locations (used for v-model)
 			value: {
 				type: Array,
 				default: function () { return []; },
-			},
-		},
-		data: function data() {
-			return {
-				selectedLocations: this.value,
-			}
-		},
-		watch: {
-			value: function value() {
-				this.selectedLocations = this.value;
 			},
 		},
 		methods: {
@@ -259,7 +249,7 @@
 		 	 * @returns {boolean} True if the location is selected
 			 */
 			isLocationSelected: function isLocationSelected(location) {
-				return this.selectedLocations.findIndex(function (selectedLocation) { return selectedLocation.id === location.id; }) > -1
+				return this.value.some(function (selectedLocation) { return selectedLocation === location.id; })
 			},
 
 			/**
@@ -268,18 +258,18 @@
 		 	 * @param {Event} event - Triggered event
 		 	 */
 			toggleLocation: function toggleLocation(event) {
-				var location = event.target;
+				var locationElt = event.target;
+				var selectedLocations;
 
-				if (location.attributes['aria-checked'] && location.attributes['aria-checked'].value === 'true') {
+				if (locationElt.attributes['aria-checked'] && locationElt.attributes['aria-checked'].value === 'true') {
 					// Delete location
-					this.selectedLocations.splice(this.selectedLocations.indexOf(location), 1);
+					selectedLocations = this.value.filter(function (location) { return location !== locationElt.id; });
 				} else {
 					// Add location
-					// FIXME: Push only value/label/id?
-					this.selectedLocations.push(location);
+					selectedLocations = ( this.value ).concat( [locationElt.id]);
 				}
 
-				this.$emit('change', this.selectedLocations);
+				this.$emit('change', selectedLocations);
 			},
 		},
 	};
@@ -371,19 +361,10 @@
 			event: 'change',
 		},
 		props: {
+			// Id of selected location (used for v-model)
 			value: {
-				type: Object,
+				type: String,
 				default: null,
-			},
-		},
-		data: function data() {
-			return {
-				selectedLocation: this.value,
-			}
-		},
-		watch: {
-			value: function value() {
-				this.selectedLocation = this.value;
 			},
 		},
 		mounted: function mounted() {
@@ -400,7 +381,7 @@
 			getLocationTabindex: function getLocationTabindex(location, index) {
 				var tabindex = null;
 
-				if (this.selectedLocation) {
+				if (this.value) {
 					// Only selected location is focusable
 					tabindex = this.isLocationSelected(location) ? '0' : '-1';
 				} else {
@@ -418,23 +399,23 @@
 		 	 * @returns {boolean} True if the location is selected
 		 	 */
 			isLocationSelected: function isLocationSelected(location) {
-				return this.selectedLocation && this.selectedLocation.id === location.id
+				return this.value === location.id
 			},
 
 			/**
 		 	 * Select a location
 		 	 *
-		 	 * @param {Node} location - Location DOM node
+		 	 * @param {Node} location - DOM node of location to select
 		 	 */
 			selectLocation: function selectLocation(location) {
-				// Focus new selected location
-				location.focus();
+				// Select only if new location
+				if (location.id !== this.value) {
+					// Focus new selected location
+					location.focus();
 
-				// Change selected location
-				this.selectedLocation = location;
-
-				// Emit selected location
-				this.$emit('change', this.selectedLocation);
+					// Emit id of selected location
+					this.$emit('change', location.id);
+				}
 			},
 
 			/**
@@ -445,7 +426,7 @@
 			toggleLocation: function toggleLocation(event) {
 				var focusedLocation = event.target;
 
-				if (this.selectedLocation !== focusedLocation) {
+				if (this.value !== focusedLocation.id) {
 					this.selectLocation(focusedLocation);
 				}
 			},
