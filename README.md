@@ -237,5 +237,3 @@ MIT
 ## TODO
 
 - Test package
-- Configure CI
-- Configure npmignore
