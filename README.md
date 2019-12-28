@@ -115,7 +115,7 @@ export default {
 | Prop           | Type             | Default      | Description                                                                                         |
 | -------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------------- |
 | map            | Object           | **required** | Describe SVG map to display. See [maps section](#maps) for more details.                            |
-| value          | Array            | `[]`         | List of selected locations. Used for `v-model`.                                                     |
+| value          | String[]            | `[]`         | List of ids of selected locations. Used for `v-model`.                                                     |
 | location-class | String\|Function | `null`       | CSS class of each `<path>`. The function parameters are the location object and the location index. |
 
 #### Events
@@ -124,7 +124,7 @@ Like for `SvgMap` all the listeners (click, keypress...) are applied to each loc
 
 | Event  | Output | Description                        |
 | ------ | ------ | ---------------------------------- |
-| change | Object | A location is selected/unselected. |
+| change | String[] | Emits the new list of ids when a location is selected/unselected. Used for `v-model`. |
 
 ### :radio_button: Radio SVG Map
 
@@ -166,7 +166,7 @@ export default {
 | Prop           | Type             | Default      | Description                                                                                         |
 | -------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------------- |
 | map            | Object           | **required** | Describe SVG map to display. See [maps section](#maps) for more details.                            |
-| value          | Object           | `null`       | Selected location. Used for `v-model`.                                                              |
+| value          | String           | `null`       | Id of selected location. Used for `v-model`.                                                              |
 | location-class | String\|Function | `null`       | CSS class of each `<path>`. The function parameters are the location object and the location index. |
 
 #### Events
@@ -175,7 +175,7 @@ Like for `SvgMap` all the listeners (click, keypress...) are applied to each loc
 
 | Event  | Output | Description                        |
 | ------ | ------ | ---------------------------------- |
-| change | Array  | A location is selected/unselected. |
+| change | String | Emits the new id when a location is selected. Used for `v-model`. |
 
 ## Maps
 
@@ -235,6 +235,5 @@ MIT
 ## TODO
 
 - Test package
-- Add unit tests
 - Configure CI
 - Configure npmignore
