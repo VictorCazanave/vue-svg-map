@@ -19,6 +19,10 @@
 		"./sfc/checkbox-svg-map": "src/components/checkbox-svg-map.vue",
 		"./sfc/radio-svg-map": "src/components/radio-svg-map.vue"
 	},
+	"files": [
+		"/src/components/*.vue",
+		"/dist"
+	],
 	"scripts": {
 		"build:umd": "rollup --config rollup.config.js --format umd --file dist/index.umd.js",
 		"build:es": "rollup --config rollup.config.js --format es --file dist/index.esm.js",
