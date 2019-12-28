@@ -233,7 +233,3 @@ If you create a new map (other country, city...), feel free to [contribute to sv
 ## License
 
 MIT
-
-## TODO
-
-- Test package
