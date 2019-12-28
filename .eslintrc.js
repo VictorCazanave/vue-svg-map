@@ -18,6 +18,10 @@ module.exports = {
     'indent': ['error', 'tab'],
     'no-tabs': 'off',
     'comma-dangle': ['error', 'always-multiline'],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': ['error', {
+      anonymous: 'never',
+      named: 'never',
+      asyncArrow: 'always'
+    }],
   }
 }
