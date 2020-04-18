@@ -18,6 +18,7 @@
       :role="locationRole"
       :aria-label="location.name"
       :aria-checked="isLocationSelected && isLocationSelected(location, index)"
+      v-bind="getLocationCustomProperties(location)"
       v-on="$listeners"
     />
     <slot name="after" />
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+const LOCATION_DEFAULT_PROPERTIES = ['id', 'name', 'path']
+
 export default {
 	name: 'SvgMap',
 	props: {
@@ -60,6 +63,20 @@ export default {
 		},
 		isLocationTabindexFunction() {
 			return typeof this.locationTabindex === 'function'
+		},
+	},
+	methods: {
+		/**
+		 * Get custom properties of a location to add custom attributes to <path>
+		 *
+		 * @param {Object} location - Location to parse
+		 * @returns {Object} Custom properties
+		 */
+		getLocationCustomProperties(location) {
+			// Filter default properties to avoid invalid/duplicated attributes
+			return Object.fromEntries(
+				Object.entries(location).filter(([key]) => !LOCATION_DEFAULT_PROPERTIES.includes(key))
+			)
 		},
 	},
 }

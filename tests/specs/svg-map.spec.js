@@ -24,4 +24,20 @@ describe('SvgMap component', () => {
 
 		expect(wrapper.element).toMatchSnapshot()
 	})
+
+	it('renders custom map', () => {
+		const customMap = {
+			...map,
+			locations: map.locations.map(location => ({
+				...location,
+				id: `custom-${location.id}`,
+				customAttribute: 'true',
+			})),
+		}
+		const wrapper = shallowMount(SvgMap, {
+			propsData: { map: customMap },
+		})
+
+		expect(wrapper.element).toMatchSnapshot()
+	})
 })
