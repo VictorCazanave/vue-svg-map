@@ -6,7 +6,7 @@
 [![Dependency Status](https://david-dm.org/VictorCazanave/vue-svg-map.svg)](https://david-dm.org/VictorCazanave/vue-svg-map)
 [![peerDependencies Status](https://david-dm.org/VictorCazanave/vue-svg-map/peer-status.svg)](https://david-dm.org/VictorCazanave/vue-svg-map?type=peer)
 
-A set of Vue.js components to display an interactive SVG map.
+_A set of Vue.js components to display an interactive SVG map._
 
 ![Vue SVG Map](https://media.giphy.com/media/QWpIwVdhY81RL05iNo/giphy.gif)
 
