@@ -83,7 +83,6 @@ There are 2 named slots:
 * `before` which is before the locations
 * `after` which is after the locations
 
-
 ### :ballot_box_with_check: Checkbox SVG Map
 
 This is an implementation of `SvgMap` that behaves like a group of checkboxes.  
@@ -131,6 +130,10 @@ export default {
 
 Like for `SvgMap` all the listeners (click, keypress...) are applied to each location.
 
+| Event  | Output   | Description                                                                           |
+| ------ | -------- | ------------------------------------------------------------------------------------- |
+| change | String[] | Emits the new list of ids when a location is selected/unselected. Used for `v-model`. |
+
 #### Slots
 
 Like in `SvgMap` there are 2 named slots:
@@ -138,10 +141,6 @@ Like in `SvgMap` there are 2 named slots:
 * `after` which is after the locations
 
 **Note:** inserting focusable elements may break the checkboxes' behaviour.
-
-| Event  | Output   | Description                                                                           |
-| ------ | -------- | ------------------------------------------------------------------------------------- |
-| change | String[] | Emits the new list of ids when a location is selected/unselected. Used for `v-model`. |
 
 ### :radio_button: Radio SVG Map
 
@@ -238,7 +237,7 @@ export default {
 				...Taiwan,
 				label: "Custom map label",
 				locations: Taiwan.locations.map(location => {
-					// Modify each location
+					// Modify each location to customize/add attributes of <path>
 				})
 			}
 		};
