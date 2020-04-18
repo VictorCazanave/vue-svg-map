@@ -9,6 +9,7 @@ exports[`CheckboxSvgMap component renders map with checkbox attributes 1`] = `
   viewBox="viewBox"
   xmlns="http://www.w3.org/2000/svg"
 >
+   
   <path
     aria-checked="true"
     aria-label="name0"
@@ -37,5 +38,6 @@ exports[`CheckboxSvgMap component renders map with checkbox attributes 1`] = `
     role="checkbox"
     tabindex="0"
   />
+   
 </svg>
 `;

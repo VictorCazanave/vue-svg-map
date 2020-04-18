@@ -7,6 +7,7 @@ exports[`SvgMap component renders map with custom props 1`] = `
   viewBox="viewBox"
   xmlns="http://www.w3.org/2000/svg"
 >
+   
   <path
     aria-checked="isLocationSelected()"
     aria-label="name0"
@@ -37,6 +38,7 @@ exports[`SvgMap component renders map with custom props 1`] = `
     role="locationRole"
     tabindex="locationTabindex"
   />
+   
 </svg>
 `;
 
@@ -47,6 +49,7 @@ exports[`SvgMap component renders map with default props 1`] = `
   viewBox="viewBox"
   xmlns="http://www.w3.org/2000/svg"
 >
+   
   <path
     aria-label="name0"
     class="svg-map__location"
@@ -68,5 +71,6 @@ exports[`SvgMap component renders map with default props 1`] = `
     id="id2"
     name="name2"
   />
+   
 </svg>
 `;

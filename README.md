@@ -77,6 +77,13 @@ export default {
 
 All the listeners (click, keypress...) are applied to each location.
 
+#### Slots
+
+There are 2 named slots:
+* `before` which is before the locations
+* `after` which is after the locations
+
+
 ### :ballot_box_with_check: Checkbox SVG Map
 
 This is an implementation of `SvgMap` that behaves like a group of checkboxes.  
@@ -117,15 +124,23 @@ export default {
 | Prop           | Type             | Default      | Description                                                                                         |
 | -------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------------- |
 | map            | Object           | **required** | Describe SVG map to display. See [maps section](#maps) for more details.                            |
-| value          | String[]            | `[]`         | List of ids of selected locations. Used for `v-model`.                                                     |
+| value          | String[]         | `[]`         | List of ids of selected locations. Used for `v-model`.                                              |
 | location-class | String\|Function | `null`       | CSS class of each `<path>`. The function parameters are the location object and the location index. |
 
 #### Events
 
 Like for `SvgMap` all the listeners (click, keypress...) are applied to each location.
 
-| Event  | Output | Description                        |
-| ------ | ------ | ---------------------------------- |
+#### Slots
+
+Like in `SvgMap` there are 2 named slots:
+* `before` which is before the locations
+* `after` which is after the locations
+
+**Note:** inserting focusable elements may break the checkboxes' behaviour.
+
+| Event  | Output   | Description                                                                           |
+| ------ | -------- | ------------------------------------------------------------------------------------- |
 | change | String[] | Emits the new list of ids when a location is selected/unselected. Used for `v-model`. |
 
 ### :radio_button: Radio SVG Map
@@ -168,16 +183,24 @@ export default {
 | Prop           | Type             | Default      | Description                                                                                         |
 | -------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------------- |
 | map            | Object           | **required** | Describe SVG map to display. See [maps section](#maps) for more details.                            |
-| value          | String           | `null`       | Id of selected location. Used for `v-model`.                                                              |
+| value          | String           | `null`       | Id of selected location. Used for `v-model`.                                                        |
 | location-class | String\|Function | `null`       | CSS class of each `<path>`. The function parameters are the location object and the location index. |
 
 #### Events
 
 Like for `SvgMap` all the listeners (click, keypress...) are applied to each location.
 
-| Event  | Output | Description                        |
-| ------ | ------ | ---------------------------------- |
+| Event  | Output | Description                                                       |
+| ------ | ------ | ----------------------------------------------------------------- |
 | change | String | Emits the new id when a location is selected. Used for `v-model`. |
+
+#### Slots
+
+Like in `SvgMap` there are 2 named slots:
+* `before` which is before the locations
+* `after` which is after the locations
+
+**Note:** inserting focusable elements may break the radio buttons' behaviour.
 
 ## Maps
 

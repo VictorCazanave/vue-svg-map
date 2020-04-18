@@ -9,6 +9,7 @@ exports[`RadioSvgMap component renders map with radio button attributes 1`] = `
   viewBox="viewBox"
   xmlns="http://www.w3.org/2000/svg"
 >
+   
   <path
     aria-label="name0"
     class="svg-map__location"
@@ -37,5 +38,6 @@ exports[`RadioSvgMap component renders map with radio button attributes 1`] = `
     role="radio"
     tabindex="-1"
   />
+   
 </svg>
 `;
