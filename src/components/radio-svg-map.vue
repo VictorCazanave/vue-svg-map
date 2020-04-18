@@ -13,7 +13,18 @@
     @keydown.right.prevent="selectNextLocation"
     @keydown.up.prevent="selectPreviousLocation"
     @keydown.left.prevent="selectPreviousLocation"
-  />
+  >
+    <!-- Pass down slots to SvgMap: https://stackoverflow.com/a/50892881/9826498 -->
+    <template
+      v-for="(_, slotName) of $scopedSlots"
+      v-slot:[slotName]="scope"
+    >
+      <slot
+        v-bind="scope"
+        :name="slotName"
+      />
+    </template>
+  </svg-map>
 </template>
 
 <script>
@@ -104,9 +115,13 @@ export default {
 	 	 * @param {Event} event - Triggered event
 	 	 */
 		selectNextLocation(event) {
-			const focusedLocation = event.target
+			// Next sibling can be anything in `after` slot
+			const nextSibling = event.target.nextSibling
+			const nextLocation = nextSibling && nextSibling.nodeName === 'path'
+				? nextSibling
+				: this.locations[0]
 
-			this.selectLocation(focusedLocation.nextSibling || this.locations[0])
+			this.selectLocation(nextLocation)
 		},
 
 		/**
@@ -115,9 +130,13 @@ export default {
 	 	 * @param {Event} event - Triggered event
 	 	 */
 		selectPreviousLocation(event) {
-			const focusedLocation = event.target
+			// Previous sibling can be anything in `before` slot
+			const previousSibling = event.target.previousSibling
+			const previousLocation = previousSibling && previousSibling.nodeName === 'path'
+				? previousSibling
+				: this.locations[this.locations.length - 1]
 
-			this.selectLocation(focusedLocation.previousSibling || this.locations[this.locations.length - 1])
+			this.selectLocation(previousLocation)
 		},
 	},
 }

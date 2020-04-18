@@ -5,6 +5,7 @@
     :aria-label="map.label"
     class="svg-map"
   >
+    <slot name="before" />
     <path
       v-for="(location, index) in map.locations"
       :id="location.id"
@@ -19,6 +20,7 @@
       :aria-checked="isLocationSelected && isLocationSelected(location, index)"
       v-on="$listeners"
     />
+    <slot name="after" />
   </svg>
 </template>
 
