@@ -22,6 +22,11 @@
 //
 //
 //
+//
+//
+//
+
+var LOCATION_DEFAULT_PROPERTIES = ['id', 'name', 'path'];
 
 var script = {
 	name: 'SvgMap',
@@ -58,6 +63,24 @@ var script = {
 		},
 		isLocationTabindexFunction: function isLocationTabindexFunction() {
 			return typeof this.locationTabindex === 'function'
+		},
+	},
+	methods: {
+		/**
+		 * Get custom properties of a location to add custom attributes to <path>
+		 *
+		 * @param {Object} location - Location to parse
+		 * @returns {Object} Custom properties
+		 */
+		getLocationCustomProperties: function getLocationCustomProperties(location) {
+			// Filter default properties to avoid invalid/duplicated attributes
+			return Object.fromEntries(
+				Object.entries(location).filter(function (ref) {
+					var key = ref[0];
+
+					return !LOCATION_DEFAULT_PROPERTIES.includes(key);
+			})
+			)
 		},
 	},
 };
@@ -155,35 +178,46 @@ var __vue_render__ = function() {
         "aria-label": _vm.map.label
       }
     },
-    _vm._l(_vm.map.locations, function(location, index) {
-      return _c(
-        "path",
-        _vm._g(
-          {
-            key: location.id,
-            staticClass: "svg-map__location",
-            class: _vm.isLocationClassFunction
-              ? _vm.locationClass(location, index)
-              : _vm.locationClass,
-            attrs: {
-              id: location.id,
-              name: location.name,
-              d: location.path,
-              tabindex: _vm.isLocationTabindexFunction
-                ? _vm.locationTabindex(location, index)
-                : _vm.locationTabindex,
-              role: _vm.locationRole,
-              "aria-label": location.name,
-              "aria-checked":
-                _vm.isLocationSelected &&
-                _vm.isLocationSelected(location, index)
-            }
-          },
-          _vm.$listeners
+    [
+      _vm._t("before"),
+      _vm._v(" "),
+      _vm._l(_vm.map.locations, function(location, index) {
+        return _c(
+          "path",
+          _vm._g(
+            _vm._b(
+              {
+                key: location.id,
+                staticClass: "svg-map__location",
+                class: _vm.isLocationClassFunction
+                  ? _vm.locationClass(location, index)
+                  : _vm.locationClass,
+                attrs: {
+                  id: location.id,
+                  name: location.name,
+                  d: location.path,
+                  tabindex: _vm.isLocationTabindexFunction
+                    ? _vm.locationTabindex(location, index)
+                    : _vm.locationTabindex,
+                  role: _vm.locationRole,
+                  "aria-label": location.name,
+                  "aria-checked":
+                    _vm.isLocationSelected &&
+                    _vm.isLocationSelected(location, index)
+                }
+              },
+              "path",
+              _vm.getLocationCustomProperties(location),
+              false
+            ),
+            _vm.$listeners
+          )
         )
-      )
-    }),
-    0
+      }),
+      _vm._v(" "),
+      _vm._t("after")
+    ],
+    2
   )
 };
 var __vue_staticRenderFns__ = [];
@@ -302,7 +336,21 @@ var __vue_render__$1 = function() {
               $event.preventDefault();
               return _vm.toggleLocation($event)
             }
-          }
+          },
+          scopedSlots: _vm._u(
+            [
+              _vm._l(_vm.$scopedSlots, function(_, slotName) {
+                return {
+                  key: slotName,
+                  fn: function(scope) {
+                    return [_vm._t(slotName, null, null, scope)]
+                  }
+                }
+              })
+            ],
+            null,
+            true
+          )
         },
         "svg-map",
         _vm.$attrs,
@@ -431,9 +479,13 @@ var script$2 = {
 	 	 * @param {Event} event - Triggered event
 	 	 */
 		selectNextLocation: function selectNextLocation(event) {
-			var focusedLocation = event.target;
+			// Next sibling can be anything in `after` slot
+			var nextSibling = event.target.nextSibling;
+			var nextLocation = nextSibling && nextSibling.nodeName === 'path'
+				? nextSibling
+				: this.locations[0];
 
-			this.selectLocation(focusedLocation.nextSibling || this.locations[0]);
+			this.selectLocation(nextLocation);
 		},
 
 		/**
@@ -442,9 +494,13 @@ var script$2 = {
 	 	 * @param {Event} event - Triggered event
 	 	 */
 		selectPreviousLocation: function selectPreviousLocation(event) {
-			var focusedLocation = event.target;
+			// Previous sibling can be anything in `before` slot
+			var previousSibling = event.target.previousSibling;
+			var previousLocation = previousSibling && previousSibling.nodeName === 'path'
+				? previousSibling
+				: this.locations[this.locations.length - 1];
 
-			this.selectLocation(focusedLocation.previousSibling || this.locations[this.locations.length - 1]);
+			this.selectLocation(previousLocation);
 		},
 	},
 };
@@ -546,7 +602,21 @@ var __vue_render__$2 = function() {
                 return _vm.selectPreviousLocation($event)
               }
             ]
-          }
+          },
+          scopedSlots: _vm._u(
+            [
+              _vm._l(_vm.$scopedSlots, function(_, slotName) {
+                return {
+                  key: slotName,
+                  fn: function(scope) {
+                    return [_vm._t(slotName, null, null, scope)]
+                  }
+                }
+              })
+            ],
+            null,
+            true
+          )
         },
         "svg-map",
         _vm.$attrs,
