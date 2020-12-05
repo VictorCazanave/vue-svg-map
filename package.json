@@ -8,7 +8,9 @@
 		"component",
 		"svg",
 		"interactive",
-		"map"
+		"map",
+		"checkbox",
+		"radiobutton"
 	],
 	"license": "MIT",
 	"main": "dist/index.umd.js",
