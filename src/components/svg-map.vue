@@ -1,28 +1,28 @@
 <template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :viewBox="map.viewBox"
-    :aria-label="map.label"
-    class="svg-map"
-  >
-    <slot name="before" />
-    <path
-      v-for="(location, index) in map.locations"
-      :id="location.id"
-      :key="location.id"
-      :name="location.name"
-      :d="location.path"
-      class="svg-map__location"
-      :class="isLocationClassFunction ? locationClass(location, index) : locationClass"
-      :tabindex="isLocationTabindexFunction ? locationTabindex(location, index) : locationTabindex"
-      :role="locationRole"
-      :aria-label="location.name"
-      :aria-checked="isLocationSelected && isLocationSelected(location, index)"
-      v-bind="getLocationCustomProperties(location)"
-      v-on="$listeners"
-    />
-    <slot name="after" />
-  </svg>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		:viewBox="map.viewBox"
+		:aria-label="map.label"
+		class="svg-map"
+	>
+		<slot name="before" />
+		<path
+			v-for="(location, index) in map.locations"
+			:id="location.id"
+			:key="location.id"
+			:name="location.name"
+			:d="location.path"
+			class="svg-map__location"
+			:class="isLocationClassFunction ? locationClass(location, index) : locationClass"
+			:tabindex="isLocationTabindexFunction ? locationTabindex(location, index) : locationTabindex"
+			:role="locationRole"
+			:aria-label="location.name"
+			:aria-checked="isLocationSelected && isLocationSelected(location, index)"
+			v-bind="getLocationCustomProperties(location)"
+			v-on="$listeners"
+		/>
+		<slot name="after" />
+	</svg>
 </template>
 
 <script>

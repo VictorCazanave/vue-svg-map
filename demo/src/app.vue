@@ -1,13 +1,13 @@
 <template>
-  <section class="examples">
-    <h1 class="examples__title">
-      Examples of <a href="https://www.npmjs.com/package/vue-svg-map">vue-svg-map</a>
-    </h1>
-    <checkbox-map />
-    <radio-map />
-    <link-map />
-    <tooltip-heat-map />
-  </section>
+	<section class="examples">
+		<h1 class="examples__title">
+			Examples of <a href="https://www.npmjs.com/package/vue-svg-map">vue-svg-map</a>
+		</h1>
+		<checkbox-map />
+		<radio-map />
+		<link-map />
+		<tooltip-heat-map />
+	</section>
 </template>
 
 <script>
