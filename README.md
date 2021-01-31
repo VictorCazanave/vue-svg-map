@@ -73,6 +73,8 @@ export default {
 | location-role        | String           | `null`       | ARIA role of each `<path>`.                                                                                      |
 | is-location-selected | Function         | `null`       | Executed to determine if a location is selected. This property is used to set the `aria-checked` HTML attribute. |
 
+**Note:** other HTML attributes (e.g. `style`, `title`, `data-*`...) can be added to and customized for each `<path>` [modifying the map object](#modify-a-map).
+
 #### Events
 
 All the listeners (click, keypress...) are applied to each location.
@@ -125,6 +127,8 @@ export default {
 | map            | Object           | **required** | Describe SVG map to display. See [maps section](#maps) for more details.                            |
 | value          | String[]         | `[]`         | List of ids of selected locations. Used for `v-model`.                                              |
 | location-class | String\|Function | `null`       | CSS class of each `<path>`. The function parameters are the location object and the location index. |
+
+**Note:** other HTML attributes (e.g. `style`, `title`, `data-*`...) can be added to and customized for each `<path>` [modifying the map object](#modify-a-map).
 
 #### Events
 
@@ -184,6 +188,9 @@ export default {
 | map            | Object           | **required** | Describe SVG map to display. See [maps section](#maps) for more details.                            |
 | value          | String           | `null`       | Id of selected location. Used for `v-model`.                                                        |
 | location-class | String\|Function | `null`       | CSS class of each `<path>`. The function parameters are the location object and the location index. |
+
+**Note:** other HTML attributes (e.g. `style`, `title`, `data-*`...) can be added to and customized for each `<path>` [modifying the map object](#modify-a-map).
+
 
 #### Events
 
