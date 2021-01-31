@@ -1,24 +1,24 @@
 <template>
-  <article class="examples__block">
-    <h2 class="examples__block__title">
-      USA SVG heat map with tooltips
-    </h2>
-    <div class="examples__block__map examples__block__map--usa">
-      <svg-map
-        :map="USA"
-        :location-class="getLocationClass"
-        @mouseover="pointLocation"
-        @mouseout="unpointLocation"
-        @mousemove="moveOnLocation"
-      />
-      <div
-        class="examples__block__map__tooltip"
-        :style="tooltipStyle"
-      >
-        {{ pointedLocation }}
-      </div>
-    </div>
-  </article>
+	<article class="examples__block">
+		<h2 class="examples__block__title">
+			USA SVG heat map with tooltips
+		</h2>
+		<div class="examples__block__map examples__block__map--usa">
+			<svg-map
+				:map="USA"
+				:location-class="getLocationClass"
+				@mouseover="pointLocation"
+				@mouseout="unpointLocation"
+				@mousemove="moveOnLocation"
+			/>
+			<div
+				class="examples__block__map__tooltip"
+				:style="tooltipStyle"
+			>
+				{{ pointedLocation }}
+			</div>
+		</div>
+	</article>
 </template>
 
 <script>

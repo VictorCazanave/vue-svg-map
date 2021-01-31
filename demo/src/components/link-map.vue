@@ -1,31 +1,31 @@
 <template>
-  <article class="examples__block">
-    <h2 class="examples__block__title">
-      France SVG map as links
-    </h2>
-    <div class="examples__block__info">
-      <div class="examples__block__info__item">
-        Pointed location: {{ pointedLocation }}
-      </div>
-      <div class="examples__block__info__item">
-        Focused location: {{ focusedLocation }}
-      </div>
-      <div class="examples__block__info__item">
-        Clicked location: {{ clickedLocation }}
-      </div>
-    </div>
-    <div class="examples__block__map">
-      <svg-map
-        :map="France"
-        location-role="link"
-        @mouseover="pointLocation"
-        @mouseout="unpointLocation"
-        @focus="focusLocation"
-        @blur="blurLocation"
-        @click="clickLocation"
-      />
-    </div>
-  </article>
+	<article class="examples__block">
+		<h2 class="examples__block__title">
+			France SVG map as links
+		</h2>
+		<div class="examples__block__info">
+			<div class="examples__block__info__item">
+				Pointed location: {{ pointedLocation }}
+			</div>
+			<div class="examples__block__info__item">
+				Focused location: {{ focusedLocation }}
+			</div>
+			<div class="examples__block__info__item">
+				Clicked location: {{ clickedLocation }}
+			</div>
+		</div>
+		<div class="examples__block__map">
+			<svg-map
+				:map="France"
+				location-role="link"
+				@mouseover="pointLocation"
+				@mouseout="unpointLocation"
+				@focus="focusLocation"
+				@blur="blurLocation"
+				@click="clickLocation"
+			/>
+		</div>
+	</article>
 </template>
 
 <script>
