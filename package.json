@@ -60,7 +60,7 @@
 		"rollup-plugin-buble": "^0.19.8",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-scss": "^1.0.2",
-		"rollup-plugin-vue": "5.1.1",
+		"rollup-plugin-vue": "6.0.0",
 		"vue": "^2.6.11",
 		"vue-jest": "^3.0.5",
 		"vue-template-compiler": "^2.6.11"
