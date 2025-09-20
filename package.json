@@ -1,10 +1,10 @@
 {
-	"name": "vue-svg-map",
-	"version": "1.2.0",
-	"description": "A set of Vue.js components to display an interactive SVG map",
+  "name": "vue-svg-map",
+  "version": "2.0.0-beta",
+	"description": "A set of Vue 3 components to display an interactive SVG map",
 	"author": "Victor Cazanave <victor.cazanave@gmail.com>",
 	"keywords": [
-		"vue",
+    "vue",
 		"component",
 		"svg",
 		"interactive",
@@ -13,59 +13,58 @@
 		"radiobutton"
 	],
 	"license": "MIT",
-	"main": "dist/index.umd.js",
-	"module": "dist/index.esm.js",
-	"unpkg": "dist/index.min.js",
-	"browser": {
-		"./sfc/svg-map": "src/components/svg-map.vue",
-		"./sfc/checkbox-svg-map": "src/components/checkbox-svg-map.vue",
-		"./sfc/radio-svg-map": "src/components/radio-svg-map.vue"
-	},
-	"files": [
-		"/src/components/*.vue",
-		"/dist"
-	],
-	"scripts": {
-		"build:umd": "rollup --config rollup.config.js --format umd --file dist/index.umd.js",
-		"build:es": "rollup --config rollup.config.js --format es --file dist/index.esm.js",
-		"build:unpkg": "rollup --config rollup.config.js --format iife --file dist/index.min.js",
-		"build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-		"lint": "eslint src/ demo/src/ --ext .js,.vue",
-		"test": "jest",
-		"prepublish": "npm run lint && npm run test && npm run build"
-	},
-	"homepage": "https://github.com/VictorCazanave/vue-svg-map#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/VictorCazanave/vue-svg-map.git"
-	},
-	"bugs": {
-		"url": "https://github.com/VictorCazanave/vue-svg-map/issues"
-	},
-	"devDependencies": {
-		"@vue/test-utils": "^1.0.0-beta.30",
-		"babel-core": "^6.26.3",
-		"babel-jest": "^24.9.0",
-		"babel-preset-env": "^1.7.0",
-		"eslint": "^5.16.0",
-		"eslint-config-standard": "^12.0.0",
-		"eslint-plugin-import": "^2.18.2",
-		"eslint-plugin-jest": "^23.1.1",
-		"eslint-plugin-node": "^9.2.0",
-		"eslint-plugin-promise": "^4.2.1",
-		"eslint-plugin-standard": "^4.0.1",
-		"eslint-plugin-vue": "^5.2.3",
-		"jest": "^24.9.0",
-		"rollup": "^1.26.3",
-		"rollup-plugin-buble": "^0.19.8",
-		"rollup-plugin-commonjs": "^10.1.0",
-		"rollup-plugin-scss": "^1.0.2",
-		"rollup-plugin-vue": "5.1.1",
-		"vue": "^2.6.11",
-		"vue-jest": "^3.0.5",
-		"vue-template-compiler": "^2.6.11"
-	},
-	"peerDependencies": {
-		"vue": "^2.0.0"
-	}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorCazanave/vue-svg-map.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VictorCazanave/vue-svg-map/issues"
+  },
+  "homepage": "https://victorcazanave.github.io/vue-svg-map/",
+  "type": "module",
+   "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-svg-map.umd.cjs",
+  "module": "./dist/vue-svg-map.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/vue-svg-map.js",
+      "require": "./dist/vue-svg-map.umd.cjs"
+    },
+    "./style.css": "./dist/vue-svg-map.css"
+  },
+
+  "scripts": {
+    "build": "run-p type-check build-only",
+    "test": "vitest",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint": "eslint . --ext .js,.ts,.vue"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.2",
+    "@types/jest": "^30.0.0",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.15.32",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitest/eslint-plugin": "^1.2.7",
+    "@vue/eslint-config-typescript": "^14.5.1",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-vue": "^10.4.0",
+    "jiti": "^2.4.2",
+    "jsdom": "^26.1.0",
+    "npm-run-all2": "^8.0.4",
+    "typescript": "~5.8.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.4",
+    "vue-tsc": "^2.2.10"
+  }
 }

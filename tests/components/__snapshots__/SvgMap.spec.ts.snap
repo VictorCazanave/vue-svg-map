@@ -1,0 +1,149 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SvgMap component > renders custom svg map 1`] = `
+<svg
+  aria-label="label"
+  class="svg-map"
+  viewBox="viewBox"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  
+  
+  
+  <path
+    aria-label="name0"
+    class="svg-map__location"
+    d="custom path of name0"
+    id="custom-id0"
+  />
+  <path
+    aria-label="name1"
+    class="svg-map__location"
+    d="custom path of name1"
+    id="custom-id1"
+  />
+  <path
+    aria-label="name2"
+    class="svg-map__location"
+    d="custom path of name2"
+    id="custom-id2"
+  />
+  
+  
+  
+</svg>
+`;
+
+exports[`SvgMap component > renders svg map with default attributes of locations 1`] = `
+<svg
+  aria-label="label"
+  class="svg-map"
+  viewBox="viewBox"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  
+  
+  
+  <path
+    aria-label="name0"
+    class="svg-map__location"
+    d="path0"
+    id="id0"
+  />
+  <path
+    aria-label="name1"
+    class="svg-map__location"
+    d="path1"
+    id="id1"
+  />
+  <path
+    aria-label="name2"
+    class="svg-map__location"
+    d="path2"
+    id="id2"
+  />
+  
+  
+  
+</svg>
+`;
+
+exports[`SvgMap component > renders svg map with dynamic custom attributes of locations 1`] = `
+<svg
+  aria-label="label"
+  class="svg-map"
+  viewBox="viewBox"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  
+  
+  
+  <path
+    aria-label="name0"
+    class="svg-map__location"
+    d="path0"
+    id="id0"
+    index="0"
+    name="name0"
+  />
+  <path
+    aria-label="name1"
+    class="svg-map__location"
+    d="path1"
+    id="id1"
+    index="1"
+    name="name1"
+  />
+  <path
+    aria-label="name2"
+    class="svg-map__location"
+    d="path2"
+    id="id2"
+    index="2"
+    name="name2"
+  />
+  
+  
+  
+</svg>
+`;
+
+exports[`SvgMap component > renders svg map with static custom attributes of locations 1`] = `
+<svg
+  aria-label="label"
+  class="svg-map"
+  viewBox="viewBox"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  
+  
+  
+  <path
+    aria-label="name0"
+    class="svg-map__location"
+    d="path0"
+    id="id0"
+    role="role"
+    tabindex="tabindex"
+  />
+  <path
+    aria-label="name1"
+    class="svg-map__location"
+    d="path1"
+    id="id1"
+    role="role"
+    tabindex="tabindex"
+  />
+  <path
+    aria-label="name2"
+    class="svg-map__location"
+    d="path2"
+    id="id2"
+    role="role"
+    tabindex="tabindex"
+  />
+  
+  
+  
+</svg>
+`;
