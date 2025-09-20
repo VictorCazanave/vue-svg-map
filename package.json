@@ -1,6 +1,6 @@
 {
   "name": "vue-svg-map",
-  "version": "2.0.0-beta",
+  "version": "2.0.0-beta.1",
 	"description": "A set of Vue 3 components to display an interactive SVG map",
 	"author": "Victor Cazanave <victor.cazanave@gmail.com>",
 	"keywords": [
@@ -38,10 +38,10 @@
   },
 
   "scripts": {
-    "build": "run-p type-check build-only",
+    "build": "run-s build-only type-check",
     "test": "vitest",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build",
+    "type-check": "vue-tsc --declaration src/index.ts --emitDeclarationOnly --declarationDir dist",
     "lint": "eslint . --ext .js,.ts,.vue"
   },
   "peerDependencies": {
