@@ -1,0 +1,52 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SvgMapRadio component > renders svg map as a group of radio buttons 1`] = `
+<div
+  data-v-app=""
+>
+  
+  <!-- NOTE: Use .stop modifier to prevent event bubbling and calling function twice -->
+  <svg
+    aria-label="label"
+    class="svg-map"
+    role="radiogroup"
+    viewBox="viewBox"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    
+    
+    
+    <path
+      aria-checked="false"
+      aria-label="name0"
+      class="svg-map__location"
+      d="path0"
+      id="id0"
+      role="radio"
+      tabindex="-1"
+    />
+    <path
+      aria-checked="true"
+      aria-label="name1"
+      class="svg-map__location"
+      d="path1"
+      id="id1"
+      role="radio"
+      tabindex="0"
+    />
+    <path
+      aria-checked="false"
+      aria-label="name2"
+      class="svg-map__location"
+      d="path2"
+      id="id2"
+      role="radio"
+      tabindex="-1"
+    />
+    
+    
+    
+  </svg>
+  
+</div>
+`;

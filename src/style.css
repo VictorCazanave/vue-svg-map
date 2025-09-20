@@ -1,0 +1,29 @@
+.svg-map {
+  --svg-map-stroke: #666666;
+  --svg-map-stroke-width: 1;
+  --svg-map-fill: #a1d99b;
+  --svg-map-fill-focus: #b8e2b3;
+  --svg-map-fill-checked: #f4bc44;
+
+  width: 100%;
+  height: auto;
+  stroke: var(--svg-map-stroke);
+  stroke-width: var(--svg-map-stroke-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-map__location {
+  fill: var(--svg-map-fill);
+  cursor: pointer;
+  outline: 0;
+}
+
+.svg-map__location:focus-visible,
+.svg-map__location:hover {
+  fill: var(--svg-map-fill-focus);
+}
+
+.svg-map__location[aria-checked="true"] {
+  fill: var(--svg-map-fill-checked);
+}

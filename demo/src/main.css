@@ -1,0 +1,83 @@
+/* Import vue-svg-map default styles */
+@import "vue-svg-map/src/style.css";
+
+/* Using box model */
+* {
+  box-sizing: border-box;
+}
+
+#app {
+	width: 60rem;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.example {
+		padding-bottom: 5rem;
+		border-bottom: 1px dotted black;
+}
+
+.example__title {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.example__info {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1rem;
+  vertical-align: top;
+  width: 20rem;
+  text-align: left;
+}
+
+.example__map {
+  display: inline-block;
+  width: 35rem;
+}
+
+.example__map--australia {
+  --svg-map-stroke-width: 0.5; /* Australia stroke is larger than other maps */
+}
+
+.example__map--usa {
+    width: 100%; /* USA needs more space	for tooltip */
+}
+
+
+ .example__map--usa  .svg-map__location--heat0 {
+        --svg-map-fill: blue;
+        --svg-map-fill-focus: var(--svg-map-fill);
+      }
+
+.example__map--usa  .svg-map__location--heat1 {
+        --svg-map-fill: lightblue;
+        --svg-map-fill-focus: var(--svg-map-fill);
+      }
+
+.example__map--usa  .svg-map__location--heat2 {
+        --svg-map-fill: orange;
+        --svg-map-fill-focus: var(--svg-map-fill);
+      }
+
+.example__map--usa  .svg-map__location--heat3 {
+        --svg-map-fill: red;
+        --svg-map-fill-focus: var(--svg-map-fill);
+      }
+
+ .example__map--usa .svg-map__location:focus,
+ .example__map--usa .svg-map__location:hover {
+        opacity: 0.75;
+ }
+
+
+
+.example__tooltip {
+  position: fixed;
+  width: 10rem;
+  padding: 1rem;
+  border: 1px solid darkgray;
+  background-color: white;
+}
