@@ -1,7 +1,6 @@
 # vue-svg-map
 
 [![npm version](https://badgen.net/npm/v/vue-svg-map)](https://www.npmjs.com/package/vue-svg-map)
-[![codecov](https://codecov.io/gh/VictorCazanave/vue-svg-map/branch/master/graph/badge.svg)](https://codecov.io/gh/VictorCazanave/vue-svg-map)
 
 _A set of Vue 3 components to display an interactive SVG map._
 
