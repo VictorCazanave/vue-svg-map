@@ -15,4 +15,5 @@ export default defineConfig({
       'vue-svg-map': fileURLToPath(new URL('../', import.meta.url))
     },
   },
+  base: '/vue-svg-map/' // For deployment to GitHub pages
 })
